@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace Lewis.DevConsole {
 
+    /// <summary>
+    /// Background of the developer console, deals with processing and invoking commands
+    /// </summary>
     public class DeveloperConsole
     {
 
@@ -22,6 +25,12 @@ namespace Lewis.DevConsole {
         {
             //Set prefix
             commandPrefix = prefix;
+
+            //Check that commands list is not null
+            if(commands == null)
+            {
+                return;
+            }
 
             //Take all of the commands and add them to the dictonary for fast lookup,
             //set the dictonary to 

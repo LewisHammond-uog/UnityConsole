@@ -12,7 +12,7 @@ namespace Lewis.DevConsole
         public string CommandWord => commandWord;
 
         //Let the user choose the description
-        [TextArea] private string commandDescription = "No Descripton";
+        [SerializeField] [TextArea] private string commandDescription = "No Descripton";
         public string CommandDescription => commandDescription;
 
         //Abstract Process function, is implemented by child classes

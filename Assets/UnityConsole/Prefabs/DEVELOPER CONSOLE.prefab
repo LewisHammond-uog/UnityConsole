@@ -188,6 +188,9 @@ MonoBehaviour:
   uiCanvas: {fileID: 7134000056121101010}
   inputFeild: {fileID: 7134000055170816922}
   outputText: {fileID: 1285271921}
+  infoOutputColour: {r: 1, g: 1, b: 1, a: 0}
+  warningOutputColour: {r: 1, g: 0.801486, b: 0, a: 0}
+  errorOutputColour: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1 &7134000054569831463
 GameObject:
   m_ObjectHideFlags: 0

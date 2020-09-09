@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -33,10 +34,17 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
     //Bool for if the console is active or not
     private bool isConsoleActive = false;
 
+#pragma warning disable 0649
     [Header("UI")]
     [SerializeField] private Canvas uiCanvas;
     [SerializeField] private TMP_InputField inputFeild;
     [SerializeField] private TMP_Text outputText;
+
+    [Header("Colours")] 
+    [SerializeField] private Color infoOutputColour = Color.white;
+    [SerializeField] private Color warningOutputColour = Color.yellow;
+    [SerializeField] private Color errorOutputColour = Color.red;
+#pragma warning restore 0649
 
     //Instances of the console & UI
     private static DeveloperConsoleBehaviour behaviourInstance;
@@ -102,9 +110,32 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
         //Add string to the output text
         if(outputText == null) { return; }
 
+        //Get the colour based on the log type
+        Color textDrawColour;
+        switch (type)
+        {
+            case LogType.Exception:
+            case LogType.Error:
+            case LogType.Assert:
+                textDrawColour = errorOutputColour;
+                break;
+            case LogType.Warning:
+                textDrawColour = warningOutputColour;
+                break;
+            case LogType.Log:
+                textDrawColour = infoOutputColour;
+                break;
+            default:
+                //Default to white
+                textDrawColour = Color.white;
+                break;
+        }
+
         StringBuilder outputSB = new StringBuilder();
+        outputSB.Append($"<color=#{ColorUtility.ToHtmlStringRGB(textDrawColour)}>"); 
         outputSB.Append(outputPrefix);
         outputSB.Append(log);
+        outputSB.Append("</color>");
 
         outputText.text += outputSB.ToString();
     }

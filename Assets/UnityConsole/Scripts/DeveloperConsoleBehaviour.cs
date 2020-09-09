@@ -136,6 +136,7 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
         outputSB.Append(outputPrefix);
         outputSB.Append(log);
         outputSB.Append("</color>");
+        outputSB.AppendLine();//blank line for spacing
 
         outputText.text += outputSB.ToString();
     }
@@ -158,7 +159,6 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
         {
             outputSB.Append("\n" + stackTrace);
         }
-        outputSB.AppendLine(); //blank line
         AddOutputLog(type, outputSB.ToString());
     }
 

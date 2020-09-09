@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Lewis.DevConsole;
+using System.Text;
 
 /// <summary>
 /// Monobehaviour to run the developer console,
@@ -12,6 +13,7 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
 {
     //Prefix for commands
     [Header("Commands")]
+    [SerializeField] private string outputPrefix = "<b>></b> ";
     [SerializeField] private string commandPrefix = "/";
 
 
@@ -19,10 +21,14 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
 #if ENABLE_LEGACY_INPUT_MANAGER
     [SerializeField] private KeyCode toggleKey = KeyCode.Tilde;
 #endif
-
-    //If we should pause the game while the console is up
-    [SerializeField] public bool ConsolePausesGame { get; set; } = false;
+    [SerializeField] private bool showUnityLogs = true; //If we should show logs from Debug.Log
+    [SerializeField] private bool showUnityStackTrace = true; //If we should show unity stack traces, only shows if we showUnityLogs
+    [SerializeField] private bool consolePausesGame = false;    //If we should pause the game while the console is up
     private float runningTimescale; //timescale of the game when we opened the console
+
+    //Properties for settings so they can be changed by commands
+    public bool ConsolePausesGame { get { return consolePausesGame; } set { consolePausesGame = value; } }
+    public bool ShowUnityLogs { get { return showUnityLogs; } set { showUnityLogs = value; } }
 
     //Bool for if the console is active or not
     private bool isConsoleActive = false;
@@ -31,7 +37,6 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
     [SerializeField] private Canvas uiCanvas;
     [SerializeField] private TMP_InputField inputFeild;
     [SerializeField] private TMP_Text outputText;
-
 
     //Instances of the console & UI
     private static DeveloperConsoleBehaviour behaviourInstance;
@@ -66,6 +71,14 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
     {
         //Get if the ui is enabled or not
         isConsoleActive = uiCanvas.enabled;
+
+        //Sub to event to get logs
+        Application.logMessageReceived += HandleUnityLog;
+    }
+
+    private void OnDisable()
+    {
+        Application.logMessageReceived -= HandleUnityLog;
     }
 
     private void Update()
@@ -77,6 +90,45 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
             ToggleUI();
         }        
 #endif
+    }
+
+    /// <summary>
+    /// Add text to the output log
+    /// </summary>
+    /// <param name="type">Type of Log</param>
+    /// <param name="log">Log string</param>
+    private void AddOutputLog(LogType type, string log)
+    {
+        //Add string to the output text
+        if(outputText == null) { return; }
+
+        StringBuilder outputSB = new StringBuilder();
+        outputSB.Append(outputPrefix);
+        outputSB.Append(log);
+
+        outputText.text += outputSB.ToString();
+    }
+
+    /// <summary>
+    /// Handle Logs which we recive from the Unity .Log, .LogWarning, .LogError, etc.
+    /// </summary>
+    /// <param name="logString">Log String</param>
+    /// <param name="stackTrace">Log Stack Trace</param>
+    /// <param name="type">Type of Log</param>
+    private void HandleUnityLog(string logString, string stackTrace, LogType type)
+    {
+        //Only process if we want to output to console
+        if (!ShowUnityLogs) { return; }
+
+        //Add to output log
+        StringBuilder outputSB = new StringBuilder();
+        outputSB.Append("<b>" + logString + "</b>");
+        if (showUnityStackTrace)
+        {
+            outputSB.Append("\n" + stackTrace);
+        }
+        outputSB.AppendLine(); //blank line
+        AddOutputLog(type, outputSB.ToString());
     }
 
     /// <summary>
@@ -107,9 +159,15 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
     /// Takes input from the text box and sends it to the developer console 
     /// for processing
     /// </summary>
-    public void ProcessInput(string input)
+    public void ProcessInput(TMPro.TMP_Text input)
     {
-        DeveloperConsole.ProcessConsoleInput(input);
+        CommandResponse response = DeveloperConsole.ProcessConsoleInput(input.text);
         inputFeild.text = string.Empty;
+
+        //If the command fails then print out a reason
+        if(response.Type == CommandResponse.ResponseType.FAIL)
+        {
+            AddOutputLog(LogType.Log, response.Message);
+        }
     }
 }

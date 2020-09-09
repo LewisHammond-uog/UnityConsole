@@ -62,12 +62,12 @@ namespace Lewis.DevConsole {
         /// Then Invokes the command actions
         /// does not check if command is valid, this is done in the invoke command function
         /// </summary>
-        public void ProcessConsoleInput(string input)
+        public CommandResponse ProcessConsoleInput(string input)
         {
             //Check that command starts with our prefix, otherwise it is invalid
             if (!input.StartsWith(commandPrefix))
             {
-                return;
+                return new CommandResponse(CommandResponse.ResponseType.FAIL, $"Command does not start with {commandPrefix}");
             }
             //Remove the prefix from the string
             input = input.Remove(0, commandPrefix.Length);
@@ -81,7 +81,7 @@ namespace Lewis.DevConsole {
             string[] args = inputSplit.Skip(1).ToArray();
 
             //Actually invoke the command
-            InvokeCommand(commandInput, args);
+            return InvokeCommand(commandInput, args);
         }
 
         /// <summary>
@@ -89,6 +89,12 @@ namespace Lewis.DevConsole {
         /// </summary>
         /// <returns></returns>
         public bool CommandExists(string command) {
+
+            if(commandsDictonary == null)
+            {
+                return false;
+            }
+
             return commandsDictonary.ContainsKey(command);
         }
 
@@ -97,16 +103,15 @@ namespace Lewis.DevConsole {
         /// </summary>
         /// <param name="commandInput">Command Input (minus the command prefix)</param>
         /// <param name="args">Command Arguments</param>
-        private void InvokeCommand(string commandInput, string[] args)
+        private CommandResponse InvokeCommand(string commandInput, string[] args)
         {
             //Check that command exists, dictonary ignores cases as it was set in the constructor
-            if(!CommandExists(commandInput)){
-                Debug.LogError($"Command {commandInput} does not exist");
-                return;
+            if(!CommandExists(commandInput)){;
+                return new CommandResponse(CommandResponse.ResponseType.FAIL, "Command does not exist");
             }
 
             //Invoke the command
-            commandsDictonary[commandInput].Invoke(args);
+            return commandsDictonary[commandInput].Invoke(args);
         }
 
     }

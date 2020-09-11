@@ -29,9 +29,15 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
     //Properties for settings so they can be changed by commands
     public bool ConsolePausesGame { get { return consolePausesGame; } set { consolePausesGame = value; } }
     public bool ShowUnityLogs { get { return showUnityLogs; } set { showUnityLogs = value; } }
+    public bool ShowStackTrace { get { return showUnityStackTrace; } set { showUnityStackTrace = value; } }
 
     //Bool for if the console is active or not
     private bool isConsoleActive = false;
+
+    [Header("Colours")]
+    private Color infoColour;
+    private Color warningColour;
+    private Color errorColour;
 
     [Header("UI")]
     [SerializeField] private Canvas uiCanvas;
@@ -123,7 +129,7 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
         //Add to output log
         StringBuilder outputSB = new StringBuilder();
         outputSB.Append("<b>" + logString + "</b>");
-        if (showUnityStackTrace)
+        if (ShowStackTrace)
         {
             outputSB.Append("\n" + stackTrace);
         }

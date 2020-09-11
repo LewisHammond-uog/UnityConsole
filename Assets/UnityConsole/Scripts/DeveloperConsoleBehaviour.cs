@@ -42,7 +42,7 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Canvas uiCanvas;
     [SerializeField] private TMP_InputField inputFeild;
-    [SerializeField] private TMP_Text outputText;
+    [SerializeField] private TMP_InputField outputText; //we ust an input feild which is read-only so that the text can be selected (and then coppied)
 
     //Instances of the console & UI
     private static DeveloperConsoleBehaviour behaviourInstance;
@@ -68,6 +68,10 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
 
         //Set this as the behaviour instance
         behaviourInstance = this;
+
+        //Make sure the output text is read-only, so our 
+        //output cannot be edited
+        outputText.readOnly = true;
 
         //Stop console being destroyed on load
         DontDestroyOnLoad(gameObject);

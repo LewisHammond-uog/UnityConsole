@@ -299,6 +299,59 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1316528303 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7089729482756035454, guid: 954d6cc9a63719c42bb38529dc804a41,
+    type: 3}
+  m_PrefabInstance: {fileID: 7089729481479398053}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1316528304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316528303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: cf195e12a687d24409f7bd2790b29814,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7089729481479398054}
+        m_TargetAssemblyTypeName: DeveloperConsoleBehaviour, Assembly-CSharp
+        m_MethodName: ToggleConsoleAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8f3283cd-9153-4136-bf94-5cb0b08760f2
+    m_ActionName: Developer/ToggleConsole[/Keyboard/tab]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Developer
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &7089729481479398053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -306,6 +359,156 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test2.m_SingletonActionBindings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test.m_Actions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test.m_Bindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: Developer.m_Actions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: Developer.m_Bindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: consoleAction.m_Id
+      value: 7a3137bd-7c72-47b2-a3e8-18aaf727afaa
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: consoleAction.m_Name
+      value: Console
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test.m_Id
+      value: c6f692a7-14b7-4c3c-bc76-f4279d64b66c
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test.m_Name
+      value: Test
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test2.m_Id
+      value: d4bc9a17-cee0-40fd-879b-dd1bfaa84962
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test2.m_Name
+      value: Test 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test2.m_SingletonActionBindings.Array.data[0].m_Id
+      value: ffb1086c-b560-4a9f-88f9-736cb63ded39
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test2.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Test 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test2.m_SingletonActionBindings.Array.data[1].m_Id
+      value: 4e914f08-40fc-435c-930b-49bea706a8b1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test2.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Test 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test.m_Actions.Array.data[0].m_Name
+      value: l
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test.m_Actions.Array.data[0].m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test.m_Actions.Array.data[0].m_ExpectedControlType
+      value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test.m_Actions.Array.data[0].m_Id
+      value: f382b963-7e66-467b-85a4-4095996f7dcf
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test.m_Bindings.Array.data[0].m_Id
+      value: f546d28c-6bd1-4704-9023-ea099845142a
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test.m_Bindings.Array.data[0].m_Action
+      value: l
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: test.m_Bindings.Array.data[0].m_Path
+      value: <Gamepad>/buttonWest
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: Developer.m_Id
+      value: 75bf3cc8-6f19-4186-865f-347c1215c409
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: Developer.m_Name
+      value: Developer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: Developer.m_Actions.Array.data[0].m_Name
+      value: New action
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: Developer.m_Actions.Array.data[0].m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: Developer.m_Actions.Array.data[0].m_ExpectedControlType
+      value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: Developer.m_Actions.Array.data[0].m_Id
+      value: 09e91fc1-f2b2-4296-8aa3-2e1f7931cc7e
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: Developer.m_Bindings.Array.data[0].m_Id
+      value: 41f3e309-f767-4cb5-8717-0c20f26d8571
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: Developer.m_Bindings.Array.data[0].m_Action
+      value: New action
+      objectReference: {fileID: 0}
     - target: {fileID: 7089729482756035449, guid: 954d6cc9a63719c42bb38529dc804a41,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -366,5 +569,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: DEVELOPER CONSOLE
       objectReference: {fileID: 0}
+    - target: {fileID: 7089729483227740363, guid: 954d6cc9a63719c42bb38529dc804a41,
+        type: 3}
+      propertyPath: m_ResetOnDeActivation
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 954d6cc9a63719c42bb38529dc804a41, type: 3}
+--- !u!114 &7089729481479398054 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7089729482756035448, guid: 954d6cc9a63719c42bb38529dc804a41,
+    type: 3}
+  m_PrefabInstance: {fileID: 7089729481479398053}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316528303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c4235cf05c370409092d7f506da4b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

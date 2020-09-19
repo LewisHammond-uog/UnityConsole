@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Lewis.DevConsole;
 using System.Text;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Monobehaviour to run the developer console,
@@ -17,10 +18,14 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
     [SerializeField] private string commandPrefix = "/";
 
 
+
     [Header("Settings")]
 #if ENABLE_LEGACY_INPUT_MANAGER
     [SerializeField] private KeyCode toggleKey = KeyCode.Tilde;
+#elif ENABLE_INPUT_SYSTEM
+    private InputAction toggleConsoleInput; //Action for when we trigger the console input
 #endif
+
     [SerializeField] private bool showUnityLogs = true; //If we should show logs from Debug.Log
     [SerializeField] private bool showUnityStackTrace = true; //If we should show unity stack traces, only shows if we showUnityLogs
     [SerializeField] private bool consolePausesGame = false;    //If we should pause the game while the console is up
@@ -73,6 +78,14 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
         //output cannot be edited
         outputText.readOnly = true;
 
+#if ENABLE_INPUT_SYSTEM
+        //Get our input action asset so we can get if the toggle button has been pressed
+        //this is used when we are trying to process input so we don't send a command
+        //if we just closed the console
+
+        toggleConsoleInput = GetComponent<PlayerInput>()?.currentActionMap?.asset["ToggleConsole"];
+#endif
+
         //Stop console being destroyed on load
         DontDestroyOnLoad(gameObject);
     }
@@ -81,6 +94,7 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
     {
         //Get if the ui is enabled or not
         isConsoleActive = uiCanvas.enabled;
+
 
         //Sub to event to get logs
         Application.logMessageReceived += HandleUnityLog;
@@ -163,6 +177,17 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
         AddOutputLog(type, outputSB.ToString());
     }
 
+#if ENABLE_INPUT_SYSTEM
+    /// <summary>
+    /// Triggered when the appropriate action is triggered in the new input system
+    /// </summary>
+    /// <param name="context"></param>
+    public void ToggleConsoleAction(InputAction.CallbackContext context)
+    {
+        ToggleUI();
+    }
+#endif
+
     /// <summary>
     /// Toggles if the UI is visible or not
     /// </summary>
@@ -190,21 +215,37 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
         if (isConsoleActive) { inputFeild.ActivateInputField(); }
     }
 
+    private void ToggleConsole()
+    {
+        Debug.Log("eve");
+    }
+
     /// <summary>
     /// Takes input from the text box and sends it to the developer console 
     /// for processing
     /// </summary>
     public void ProcessInput(TMPro.TMP_Text input)
     {
-        //Check we have not just pressed to close the console
+
 #if ENABLE_LEGACY_INPUT_MANAGER
+        //Check we have not just pressed to close the console
         if (Input.GetKeyDown(toggleKey))
         {
             return;
         }
-#endif //ENABLE_LEGACY_INPUT_MANAGER
+#elif ENABLE_INPUT_SYSTEM
+        //Get if the input action is active (i.e just pressed to close the console)
+        if (toggleConsoleInput != null)
+        {
+            if (toggleConsoleInput.triggered)
+            {
+                Debug.Log("Test");
+                return;
+            }
+        }
+#endif 
 
-        CommandResponse response = DeveloperConsole.ProcessConsoleInput(input.text);
+        CommandResponse response = DeveloperConsole.ProcessConsoleInput(input.text);    
         inputFeild.text = string.Empty;
 
         //If the command fails then print out a reason

@@ -133,7 +133,7 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
         }
 
         StringBuilder outputSB = new StringBuilder();
-        outputSB.Append($"<color=#{ColorUtility.ToHtmlStringRGB(textDrawColour)}>");
+        outputSB.AppendLine($"<color=#{ColorUtility.ToHtmlStringRGB(textDrawColour)}>");
         outputSB.Append(outputPrefix);
         outputSB.Append(log);
         outputSB.Append("</color>");
@@ -196,6 +196,14 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
     /// </summary>
     public void ProcessInput(TMPro.TMP_Text input)
     {
+        //Check we have not just pressed to close the console
+#if ENABLE_LEGACY_INPUT_MANAGER
+        if (Input.GetKeyDown(toggleKey))
+        {
+            return;
+        }
+#endif //ENABLE_LEGACY_INPUT_MANAGER
+
         CommandResponse response = DeveloperConsole.ProcessConsoleInput(input.text);
         inputFeild.text = string.Empty;
 

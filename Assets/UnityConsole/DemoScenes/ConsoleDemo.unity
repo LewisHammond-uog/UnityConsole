@@ -306,26 +306,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2419000800150580636, guid: d42a60ea8b412cf4c852b865b1b81185,
-        type: 3}
-      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2419000800150580636, guid: d42a60ea8b412cf4c852b865b1b81185,
-        type: 3}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2419000800150580636, guid: d42a60ea8b412cf4c852b865b1b81185,
-        type: 3}
-      propertyPath: m_CaretBlinkRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2419000800150580636, guid: d42a60ea8b412cf4c852b865b1b81185,
-        type: 3}
-      propertyPath: m_ReadOnly
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7134000054569562152, guid: d42a60ea8b412cf4c852b865b1b81185,
         type: 3}
       propertyPath: m_LocalPosition.x

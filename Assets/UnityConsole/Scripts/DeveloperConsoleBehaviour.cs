@@ -183,7 +183,10 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
             Time.timeScale = isConsoleActive ? 0 : runningTimescale;
         }
 
+        inputFeild.enabled = isConsoleActive;
+        outputText.enabled = isConsoleActive;
         uiCanvas.enabled = isConsoleActive;
+        
         if (isConsoleActive) { inputFeild.ActivateInputField(); }
     }
 

@@ -111,10 +111,32 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
     {
         //Add string to the output text
         if(outputText == null) { return; }
+        //Get the colour based on the log type
+        Color textDrawColour;
+        switch (type)
+        {
+            case LogType.Exception:
+            case LogType.Error:
+            case LogType.Assert:
+                textDrawColour = errorColour;
+                break;
+            case LogType.Warning:
+                textDrawColour = warningColour;
+                break;
+            case LogType.Log:
+                textDrawColour = infoColour;
+                break;
+            default:
+                //Default to white
+                textDrawColour = Color.white;
+                break;
+        }
 
         StringBuilder outputSB = new StringBuilder();
+        outputSB.Append($"<color=#{ColorUtility.ToHtmlStringRGB(textDrawColour)}>");
         outputSB.Append(outputPrefix);
         outputSB.Append(log);
+        outputSB.Append("</color>");
 
         outputText.text += outputSB.ToString();
     }

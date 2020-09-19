@@ -35,9 +35,9 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
     private bool isConsoleActive = false;
 
     [Header("Colours")]
-    private Color infoColour;
-    private Color warningColour;
-    private Color errorColour;
+    [SerializeField] private Color infoColour;
+    [SerializeField] private Color warningColour;
+    [SerializeField] private Color errorColour;
 
     [Header("UI")]
     [SerializeField] private Canvas uiCanvas;

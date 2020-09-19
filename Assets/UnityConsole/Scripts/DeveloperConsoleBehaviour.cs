@@ -39,7 +39,7 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
     [SerializeField] private Color warningColour;
     [SerializeField] private Color errorColour;
 
-    [Header("UI")]
+    [Header("UI Elements")]
     [SerializeField] private Canvas uiCanvas;
     [SerializeField] private TMP_InputField inputFeild;
     [SerializeField] private TMP_InputField outputText; //we ust an input feild which is read-only so that the text can be selected (and then coppied)

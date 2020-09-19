@@ -366,10 +366,70 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7134000054569562153, guid: d42a60ea8b412cf4c852b865b1b81185,
+        type: 3}
+      propertyPath: infoColour.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134000054569562153, guid: d42a60ea8b412cf4c852b865b1b81185,
+        type: 3}
+      propertyPath: infoColour.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134000054569562153, guid: d42a60ea8b412cf4c852b865b1b81185,
+        type: 3}
+      propertyPath: infoColour.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134000054569562153, guid: d42a60ea8b412cf4c852b865b1b81185,
+        type: 3}
+      propertyPath: warningColour.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134000054569562153, guid: d42a60ea8b412cf4c852b865b1b81185,
+        type: 3}
+      propertyPath: warningColour.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134000054569562153, guid: d42a60ea8b412cf4c852b865b1b81185,
+        type: 3}
+      propertyPath: warningColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134000054569562153, guid: d42a60ea8b412cf4c852b865b1b81185,
+        type: 3}
+      propertyPath: infoColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134000054569562153, guid: d42a60ea8b412cf4c852b865b1b81185,
+        type: 3}
+      propertyPath: errorColour.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134000054569562153, guid: d42a60ea8b412cf4c852b865b1b81185,
+        type: 3}
+      propertyPath: errorColour.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134000054569562153, guid: d42a60ea8b412cf4c852b865b1b81185,
+        type: 3}
+      propertyPath: errorColour.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134000054569562153, guid: d42a60ea8b412cf4c852b865b1b81185,
+        type: 3}
+      propertyPath: errorColour.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7134000054569562159, guid: d42a60ea8b412cf4c852b865b1b81185,
         type: 3}
       propertyPath: m_Name
       value: DEVELOPER CONSOLE
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839155375562354488, guid: d42a60ea8b412cf4c852b865b1b81185,
+        type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d42a60ea8b412cf4c852b865b1b81185, type: 3}

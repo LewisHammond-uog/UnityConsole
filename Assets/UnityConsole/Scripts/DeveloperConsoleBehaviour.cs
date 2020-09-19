@@ -4,7 +4,11 @@ using UnityEngine;
 using TMPro;
 using Lewis.DevConsole;
 using System.Text;
-using UnityEngine.InputSystem;
+
+#if ENABLE_INPUT_SYSTEM
+    using UnityEngine.InputSystem;
+#endif
+
 
 /// <summary>
 /// Monobehaviour to run the developer console,
@@ -16,8 +20,6 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
     [Header("Commands")]
     [SerializeField] private string outputPrefix = "<b>></b> ";
     [SerializeField] private string commandPrefix = "/";
-
-
 
     [Header("Settings")]
 #if ENABLE_LEGACY_INPUT_MANAGER
@@ -233,6 +235,7 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
         {
             return;
         }
+
 #elif ENABLE_INPUT_SYSTEM
         //Get if the input action is active (i.e just pressed to close the console)
         if (toggleConsoleInput != null)

@@ -63,19 +63,28 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Awake()
+    private void OnEnable()
     {
         //Check console UI does not already exist, if it does then delete this
-        if(behaviourInstance != null && behaviourInstance != this)
+        if (behaviourInstance != null)
         {
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
 
         //Set this as the behaviour instance
         behaviourInstance = this;
 
+        //Get if the ui is enabled or not
+        isConsoleActive = uiCanvas.enabled;
+
+        //Sub to event to get logs
+        Application.logMessageReceived += HandleUnityLog;
+    }
+
+    // Start is called before the first frame update
+    void Awake()
+    {
         //Make sure the output text is read-only, so our 
         //output cannot be edited
         outputText.readOnly = true;
@@ -92,15 +101,7 @@ public class DeveloperConsoleBehaviour : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void OnEnable()
-    {
-        //Get if the ui is enabled or not
-        isConsoleActive = uiCanvas.enabled;
 
-
-        //Sub to event to get logs
-        Application.logMessageReceived += HandleUnityLog;
-    }
 
     private void OnDisable()
     {

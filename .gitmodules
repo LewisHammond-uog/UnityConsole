@@ -1,0 +1,3 @@
+[submodule "Assets\\UnityConsole\\Scripts\\3rdParty\\SimpleJSON"]
+	path = Assets\\UnityConsole\\Scripts\\3rdParty\\SimpleJSON
+	url = https://github.com/Bunny83/SimpleJSON.git

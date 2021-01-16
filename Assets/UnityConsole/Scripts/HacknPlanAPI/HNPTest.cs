@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using simplejos
+
 //5a1b44d8a798498b9058d0953c63d57c
 public class HNPTest : MonoBehaviour
 {
@@ -37,6 +39,14 @@ public class HNPTest : MonoBehaviour
     {
         request.SetRequestHeader("Content-Type", "application/json");
         request.SetRequestHeader("Authorization", "ApiKey {API KEY}");
+    }
+
+    private string GetAPIKey()
+    {
+        #if UNITY_EDITOR 
+            //todo Get Key from somewhere else
+            return "5a1b44d8a798498b9058d0953c63d57c";
+        #endif
     }
     
     
